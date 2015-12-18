@@ -186,14 +186,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            Object tag = viewPager.getTag();
-            Integer index = 0;
-            if (tag != null) {
-                index = (Integer) tag;
+            for (int i = 0; i < fragmentList.size(); i++) {
+                if (i == position) continue;
+                ButtomBarItem preItem = buttomBarItemList.get(i);
+                setButtomBarItemSelected(preItem, 0);
+                viewPager.setTag(position);
             }
-            ButtomBarItem preItem = buttomBarItemList.get(index);
-            setButtomBarItemSelected(preItem, 0);
-            viewPager.setTag(position);
+
             BaseFragment fragment = fragmentList.get(position);
             ButtomBarItem buttomBarItem = buttomBarItemList.get(position);
             setButtomBarItemSelected(buttomBarItem, 1);

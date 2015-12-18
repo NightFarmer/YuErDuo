@@ -33,17 +33,12 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
         android:id="@+id/recyclerView"
         android:layout_marginTop="30dp"
-        android:background="#ff0000"
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />
-    <ListView
-        android:id="@+id/myListView"
-        android:layout_marginTop="30dp"
-        android:background="#ff0000"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

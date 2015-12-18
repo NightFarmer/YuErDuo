@@ -9,5 +9,26 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--标题栏标题样式-->
+    <style name="TopBarTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!--标题栏右侧文字样式-->
+    <style name="TopBarRightTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@drawable/color_text_topbar</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">16sp</item>
+    </style>
+
+
 
 </resources>

@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jqyd.yuerduo.MainFunctionAddActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#38ADFF"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TopBarTitle"
+                android:text="常用功能新增" />
+
+            <TextView
+                android:id="@+id/bt_ok"
+                style="@style/TopBarRightTitle"
+                android:text="确定" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

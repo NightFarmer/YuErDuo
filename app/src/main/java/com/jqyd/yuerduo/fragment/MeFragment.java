@@ -1,5 +1,6 @@
 package com.jqyd.yuerduo.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 
 import com.jqyd.yuerduo.MyRecyclerViewAdapter;
 import com.jqyd.yuerduo.R;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -40,9 +42,6 @@ public class MeFragment extends BaseFragment {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    @Bind(R.id.myListView)
-    ListView listView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,29 +49,14 @@ public class MeFragment extends BaseFragment {
         ButterKnife.bind(this, inflate);
 
         recyclerView.setAdapter(new MyRecyclerViewAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        listView.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return 5;
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return position;
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                return new Button(parent.getContext());
-            }
-        });
+        recyclerView.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getActivity())
+                        .color(Color.RED)
+                        .size(1)
+                        .margin(10, 30)
+                        .build());
 
         return inflate;
     }
