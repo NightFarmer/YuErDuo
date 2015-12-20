@@ -6,4 +6,7 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_main_function_add">MainFunctionAddActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_reset_password1">ResetPasswordActivity1</string>
+    
+    <string name="input_phone_number_notice">重置密码需要验证你的手机号码</string>
 </resources>

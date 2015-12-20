@@ -4,4 +4,8 @@
     <item android:state_pressed="true">
         <color android:color="#EFF0F3" />
     </item>
+
+    <item>
+        <color android:color="@color/windowBackground" />
+    </item>
 </selector>

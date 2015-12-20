@@ -1,5 +1,6 @@
 package com.jqyd.yuerduo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -7,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             buttomBarItem.imageViewSelected.setImageResource(fragment.getIconSelected());
             buttomBarItemList.add(buttomBarItem);
         }
+        buttomBarItemList.get(0).redDot.setVisibility(View.VISIBLE);
     }
 
     private void setButtomBarItemSelected(ButtomBarItem buttomBarItem, float percent) {
@@ -110,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         TextView titleDefault;
         @Bind(R.id.itemTitleSelected)
         TextView titleSelected;
+        @Bind(R.id.red_dot)
+        View redDot;
 
         @OnClick(R.id.buttomItem)
         public void onItemClick() {
@@ -205,6 +210,18 @@ public class MainActivity extends AppCompatActivity {
                 onPageSelected(viewPager.getCurrentItem());
             }
         }
+    }
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            this.startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 

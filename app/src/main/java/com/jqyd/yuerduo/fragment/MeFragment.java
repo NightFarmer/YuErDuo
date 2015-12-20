@@ -39,8 +39,7 @@ public class MeFragment extends BaseFragment {
         return R.drawable.more1;
     }
 
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
+
 
     @Nullable
     @Override
@@ -48,15 +47,7 @@ public class MeFragment extends BaseFragment {
         View inflate = inflater.inflate(R.layout.fragment_me, container, false);
         ButterKnife.bind(this, inflate);
 
-        recyclerView.setAdapter(new MyRecyclerViewAdapter());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerView.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(getActivity())
-                        .color(Color.RED)
-                        .size(1)
-                        .margin(10, 30)
-                        .build());
 
         return inflate;
     }

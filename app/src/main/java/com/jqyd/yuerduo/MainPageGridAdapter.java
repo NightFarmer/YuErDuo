@@ -43,6 +43,7 @@ public class MainPageGridAdapter extends RecyclerView.Adapter<MainPageGridAdapte
         if (getItemViewType(position) == 0) {
             FunctionBean functionBean = dataList.get(position);
             holder.title.setText(functionBean.title);
+            holder.imageView.setImageResource(functionBean.icon);
             holder.item_function.setTag(functionBean);
         }
     }
