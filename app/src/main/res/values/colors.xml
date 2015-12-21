@@ -2,4 +2,7 @@
 <resources>
     <color name="windowBackground">#FEFEFF</color>
     <color name="windowBackgroundDark">#EFEFF4</color>
+
+    <color name="borderLight">#EBE8E6</color>
+    <color name="borderDark">#DBDBDB</color>
 </resources>

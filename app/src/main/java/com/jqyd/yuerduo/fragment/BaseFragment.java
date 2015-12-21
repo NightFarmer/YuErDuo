@@ -1,5 +1,6 @@
 package com.jqyd.yuerduo.fragment;
 
+import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 
 /**
@@ -9,6 +10,9 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract String getTitle();
 
-    public abstract int getIconDefault();
-    public abstract int getIconSelected();
+    public abstract
+    int getIconDefault();
+
+    public abstract
+    int getIconSelected();
 }

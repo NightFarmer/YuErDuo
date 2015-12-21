@@ -1,5 +1,7 @@
 package com.jqyd.yuerduo.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jqyd.yuerduo.FunctionBean;
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.bean.FunctionBean;
 
 import java.util.List;
 
@@ -122,11 +124,11 @@ public class FunctionsActivity extends AppCompatActivity {
 
             @OnClick(R.id.list_item)
             public void onClick(View view) {
-//                FunctionBean tag = (FunctionBean) itemView.getTag();
-//                Context context = view.getContext();
-//                Intent intent = new Intent(context, FunctionsActivity.class);
-//                intent.putExtra("function", tag);
-//                context.startActivity(intent);
+                FunctionBean tag = (FunctionBean) itemView.getTag();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, MessageListActivity.class);
+                intent.putExtra("function", tag);
+                context.startActivity(intent);
             }
         }
     }

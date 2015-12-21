@@ -1,4 +1,4 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.activity;
 
 import android.content.Intent;
 import android.opengl.ETC1;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.activity.ResetPasswordActivity1;
 
 import butterknife.Bind;

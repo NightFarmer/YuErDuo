@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/windowBackgroundDark"
-    tools:context="com.jqyd.yuerduo.activity.FunctionsActivity">
+    tools:context="com.jqyd.yuerduo.activity.MessageListActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,14 +18,13 @@
             android:layout_height="50dp">
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/topBar_title"
                 style="@style/TopBarTitle"
-                android:text="功能列表" />
+                android:text="标题" />
         </RelativeLayout>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:overScrollMode="never"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

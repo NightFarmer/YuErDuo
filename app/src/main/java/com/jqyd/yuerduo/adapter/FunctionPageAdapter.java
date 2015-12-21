@@ -1,4 +1,4 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.activity.FunctionsActivity;
+import com.jqyd.yuerduo.bean.FunctionBean;
 
 import java.util.ArrayList;
 import java.util.List;

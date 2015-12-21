@@ -1,4 +1,4 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;

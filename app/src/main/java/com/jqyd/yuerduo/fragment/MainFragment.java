@@ -6,18 +6,20 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jqyd.yuerduo.DividerGridItemDecoration;
-import com.jqyd.yuerduo.FunctionBean;
-import com.jqyd.yuerduo.FunctionPageAdapter;
-import com.jqyd.yuerduo.MainPageGridAdapter;
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.adapter.MainPageGridAdapter;
+import com.jqyd.yuerduo.bean.FunctionBean;
+import com.jqyd.yuerduo.widget.DividerGridItemDecoration;
+import com.jqyd.yuerduo.widget.SimpleItemTouchHelperCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by zhangfan on 2015/12/14.
@@ -41,6 +43,9 @@ public class MainFragment extends BaseFragment {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @Bind(R.id.layout_notice)
+    View layout_notice;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,9 +56,12 @@ public class MainFragment extends BaseFragment {
 
         recyclerView.addItemDecoration(new DividerGridItemDecoration(getContext()));
 
-        MainPageGridAdapter adapter = new MainPageGridAdapter();
+        MainPageGridAdapter adapter = new MainPageGridAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
+        SimpleItemTouchHelperCallback touchHelperCallback = new SimpleItemTouchHelperCallback(adapter, SimpleItemTouchHelperCallback.RecyclerViewLayoutType.grid);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(touchHelperCallback);
+        touchHelper.attachToRecyclerView(recyclerView);
 
         FunctionBean functionBean = new FunctionBean();
         functionBean.title = "消息通知";
@@ -98,5 +106,10 @@ public class MainFragment extends BaseFragment {
 
 
         return inflate;
+    }
+
+    @OnClick(R.id.bt_notice_close)
+    public void onCloseNotice() {
+        layout_notice.setVisibility(View.GONE);
     }
 }

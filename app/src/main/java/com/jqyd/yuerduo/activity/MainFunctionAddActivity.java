@@ -1,10 +1,12 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.jqyd.yuerduo.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

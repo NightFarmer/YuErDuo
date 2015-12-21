@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jqyd.yuerduo.FunctionBean;
-import com.jqyd.yuerduo.FunctionPageAdapter;
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.adapter.FunctionPageAdapter;
+import com.jqyd.yuerduo.bean.FunctionBean;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;

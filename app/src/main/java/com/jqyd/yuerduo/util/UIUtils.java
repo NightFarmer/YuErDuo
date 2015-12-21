@@ -1,4 +1,4 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.util;
 
 import android.app.Activity;
 import android.view.Window;

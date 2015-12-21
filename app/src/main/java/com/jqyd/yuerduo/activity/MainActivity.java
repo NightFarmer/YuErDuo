@@ -1,4 +1,4 @@
-package com.jqyd.yuerduo;
+package com.jqyd.yuerduo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.fragment.BaseFragment;
 import com.jqyd.yuerduo.fragment.ContactsFragment;
 import com.jqyd.yuerduo.fragment.FunctionsFragment;
@@ -213,16 +214,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            this.startActivity(intent);
-            return true;
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
         }
         return super.onKeyDown(keyCode, event);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        super.onBackPressed();
+    }
 
 }
