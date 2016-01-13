@@ -46,11 +46,13 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/iv_showQR"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ajr" />
+            android:src="@drawable/ewm" />
     </RelativeLayout>
 
     <View
@@ -123,37 +125,37 @@
         android:layout_width="match_parent"
         android:layout_height="1px"/>
 
-    <LinearLayout
-        android:clickable="true"
-        android:background="@drawable/bgd_list_item"
-        android:padding="15dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/function5"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:text="修改密码"
-            android:layout_gravity="center_vertical"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_width="8dp"
-            android:layout_height="16dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/account_ic_right_arrow" />
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:clickable="true"-->
+        <!--android:background="@drawable/bgd_list_item"-->
+        <!--android:padding="15dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<ImageView-->
+            <!--android:src="@drawable/function5"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp" />-->
+        <!--<TextView-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:text="修改密码"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" />-->
+        <!--<ImageView-->
+            <!--android:layout_width="8dp"-->
+            <!--android:layout_height="16dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@drawable/account_ic_right_arrow" />-->
+    <!--</LinearLayout>-->
 
-    <View
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/borderLight"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
+    <!--<View-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:background="@color/borderLight"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"/>-->
 
     <LinearLayout
         android:clickable="true"

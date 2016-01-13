@@ -1,7 +1,11 @@
 package com.jqyd.yuerduo.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,24 +16,40 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.fragment.BaseFragment;
-import com.jqyd.yuerduo.fragment.ContactsFragment;
 import com.jqyd.yuerduo.fragment.FunctionsFragment;
 import com.jqyd.yuerduo.fragment.MainFragment;
 import com.jqyd.yuerduo.fragment.MeFragment;
+import com.jqyd.yuerduo.fragment.contacts.ContactsFragment;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
+import com.nightfarmer.lightdialog.alert.AlertView;
+import com.nightfarmer.lightdialog.common.listener.OnItemClickListener;
+import com.nightfarmer.lightdialog.progress.ProgressHUD;
+import com.nightfarmer.zxing.ScanHelper;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     @Bind(R.id.tv_title)
-    TextView textView;
+    TextView tv_title;
 
     @Bind(R.id.buttomBar)
     LinearLayout buttomBar;
@@ -46,6 +66,15 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout topLayout;
     int topLayoutMaxHeight;
     int topLayoutMinHeight;
+
+    @Bind(R.id.scanBt)
+    ImageButton scanBt;
+
+    @Bind(R.id.arrow_down)
+    ImageButton arrow_down;
+
+    @Bind(R.id.v_mask)
+    View v_mask;
 
     LayoutInflater layoutInflater;
 
@@ -72,7 +101,95 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new MainPageViewPagerAdapter());
         initButtomBar();
         viewPager.addOnPageChangeListener(new MainPageChangeListener());
+        AlphaAnimation animation = new AlphaAnimation(1, 0);
+        animation.setDuration(0);
+        animation.setFillAfter(true);
+        v_mask.startAnimation(animation);
     }
+
+    private int preSelected;
+
+    @OnClick({R.id.tv_title, R.id.arrow_down})
+    public void onTitleCheck() {
+        if (viewPager.getCurrentItem() != 1) return;
+        LinearLayout layout = new LinearLayout(this);
+        layout.setBackgroundColor(Color.GRAY);
+        layout.setBackgroundResource(R.drawable.popover_background);
+        final ListView tv = new ListView(this);
+        tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        layout.addView(tv);
+        final List<String> listx = new ArrayList<>();
+        listx.add("渠道通讯录");
+        listx.add("员工通讯录");
+        tv.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return listx.size();
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return listx.get(position);
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return position;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View inflate = LayoutInflater.from(MainActivity.this).inflate(R.layout.layout_list_item_pop, parent, false);
+                TextView tv_item = (TextView) inflate.findViewById(R.id.tv_item);
+                tv_item.setText(listx.get(position));
+                if (position == preSelected) {
+                    tv_item.setTextColor(0xff38ADFF);
+                } else {
+                    tv_item.setTextColor(0xff737373);
+                }
+                return inflate;
+            }
+        });
+//        tv.setAdapter(new SimpleAdapter(this, list, R.layout.layout_list_item_pop, from, to));
+        float with = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, getResources().getDisplayMetrics());
+        float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
+        final PopupWindow popupWindow = new PopupWindow(layout, (int) with, (int) height);
+        tv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                popupWindow.dismiss();
+                TextView viewById = (TextView) view.findViewById(R.id.tv_item);
+                viewById.setTextColor(0xff38ADFF);
+                preSelected = position;
+            }
+        });
+
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        int[] location = new int[2];
+        tv_title.getLocationOnScreen(location);
+        int xpos = tv_title.getWidth() / 2 - popupWindow.getWidth() / 2;
+        //xoff,yoff基于anchor的左下角进行偏移。
+        popupWindow.showAsDropDown(tv_title, xpos, 0);
+
+        AlphaAnimation animation = new AlphaAnimation(0, 1);
+        animation.setDuration(600);
+        animation.setFillAfter(true);
+        v_mask.startAnimation(animation);
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                AlphaAnimation animation = new AlphaAnimation(1, 0);
+                animation.setDuration(600);
+                animation.setFillAfter(true);
+                v_mask.startAnimation(animation);
+            }
+        });
+    }
+
 
     private void initButtomBar() {
         for (int i = 0; i < fragmentList.size(); i++) {
@@ -202,7 +319,18 @@ public class MainActivity extends AppCompatActivity {
             BaseFragment fragment = fragmentList.get(position);
             ButtomBarItem buttomBarItem = buttomBarItemList.get(position);
             setButtomBarItemSelected(buttomBarItem, 1);
-            textView.setText(fragment.getTitle());
+            tv_title.setText(fragment.getTitle());
+
+            if (position == fragmentList.size() - 1) {
+                scanBt.setVisibility(View.VISIBLE);
+            } else {
+                scanBt.setVisibility(View.GONE);
+            }
+            if (position == 1) {
+                arrow_down.setVisibility(View.VISIBLE);
+            } else {
+                arrow_down.setVisibility(View.GONE);
+            }
         }
 
         @Override
@@ -229,4 +357,106 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+
+    @OnClick(R.id.scanBt)
+    public void onScan() {
+        ScanHelper.capture(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String resultStr = ScanHelper.handlerData(requestCode, resultCode, data);
+        if (resultStr != null) {
+            Toast.makeText(MainActivity.this, "" + resultStr, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    RequestHandle updateRequestHandle;
+    AlertView alertView;
+    AlertView alertView2;
+    ProgressHUD mSVProgressHUD;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (dialogIsShowing() || updateRequestHandle != null && !updateRequestHandle.isCancelled() && !updateRequestHandle.isFinished())
+            return;
+
+        alertView = new AlertView("提示", "发现新版本，是否更新？", "取消", new String[]{"确定"}, null, this, AlertView.Style.Alert, new OnItemClickListener() {
+            @Override
+            public void onItemClick(Object o, int i) {
+                if (-1 == i) {
+                    alertView.dismiss();
+                } else {
+                    doDownLoad();
+                }
+            }
+        });
+        alertView.setCancelable(false);
+        alertView.show();
+
+    }
+
+    private boolean dialogIsShowing() {
+        return alertView != null && alertView.isShowing() || alertView2 != null && alertView2.isShowing()
+                || mSVProgressHUD != null && mSVProgressHUD.isShowing();
+    }
+
+    private void doDownLoad() {
+        mSVProgressHUD = new ProgressHUD(this);
+        mSVProgressHUD.getProgressBar().setProgress(0);//先重设了进度再显示，避免下次再show会先显示上一次的进度位置所以要先将进度归0
+        mSVProgressHUD.showWithProgress("更新进度 " + 0 + "%", ProgressHUD.SVProgressHUDMaskType.Black);
+
+        alertView2 = new AlertView("提示", "更新失败，是否重试？", "取消", new String[]{"确定"}, null, this, AlertView.Style.Alert, new OnItemClickListener() {
+            @Override
+            public void onItemClick(Object o, int i) {
+                if (-1 == i) {
+                    alertView2.dismiss();
+                } else {
+                    doDownLoad();
+                }
+            }
+        });
+        alertView2.setCancelable(false);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        boolean sdCardMounted = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+//        if (sdCardMounted) {
+        File file = new File(Environment.getExternalStorageDirectory(), "JqEIP.apk");
+//        }
+        client.setMaxRetriesAndTimeout(10, 60000);
+        updateRequestHandle = client.get("http://www.jqgj.com.cn/download/JqEIP.apk", new FileAsyncHttpResponseHandler(file) {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
+                Log.i("xx", "FF");
+                Log.i("xx", "" + throwable.toString());
+                mSVProgressHUD.dismiss();
+
+                alertView2.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, File file) {
+                Log.i("xx", "SS");
+                mSVProgressHUD.dismiss();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                MainActivity.this.startActivity(intent);
+            }
+
+            @Override
+            public void onProgress(long bytesWritten, long totalSize) {
+                super.onProgress(bytesWritten, totalSize);
+                if (mSVProgressHUD.getProgressBar().getMax() != mSVProgressHUD.getProgressBar().getProgress()) {
+                    int progress = (int) (bytesWritten * 100.0 / totalSize);
+                    mSVProgressHUD.getProgressBar().setProgress(progress);
+                    mSVProgressHUD.setText("更新进度 " + progress + "%");
+                } else {
+                    mSVProgressHUD.dismiss();
+                }
+            }
+        });
+    }
 }

@@ -86,7 +86,8 @@ public class FunctionsActivity extends AppCompatActivity {
                     holder.line_middle.setVisibility(View.GONE);
                     holder.line_buttom.setVisibility(View.VISIBLE);
                 }
-                if (0!=position) holder.red_dot.setVisibility(View.GONE);
+//                if (0!=position)
+                    holder.red_dot.setVisibility(View.GONE);
             } else {
                 ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
                 layoutParams.height = 20;

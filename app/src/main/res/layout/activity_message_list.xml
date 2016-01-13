@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/yyy"
     android:background="@color/windowBackgroundDark"
     tools:context="com.jqyd.yuerduo.activity.MessageListActivity">
 
@@ -21,6 +22,12 @@
                 android:id="@+id/topBar_title"
                 style="@style/TopBarTitle"
                 android:text="标题" />
+
+            <Button
+                android:id="@+id/xxx"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
     </RelativeLayout>
 

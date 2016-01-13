@@ -2,6 +2,7 @@ package com.jqyd.yuerduo.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +31,12 @@ import butterknife.OnTouch;
  */
 public class MainPageGridAdapter extends RecyclerViewDraggableAdapter<MainPageGridAdapter.MyViewHolder> {
 
-    public List<FunctionBean> dataList = new ArrayList<>();
+    public ArrayList<FunctionBean> dataList = new ArrayList<>();
 
-    public Context context;
+    public Fragment fragment;
 
-    public MainPageGridAdapter(Context context) {
-        this.context = context;
+    public MainPageGridAdapter( Fragment fragment) {
+        this.fragment = fragment;
     }
 
     @Override
@@ -73,7 +74,7 @@ public class MainPageGridAdapter extends RecyclerViewDraggableAdapter<MainPageGr
 
     @Override
     public Context getContext() {
-        return context;
+        return fragment.getContext();
     }
 
 
@@ -102,7 +103,9 @@ public class MainPageGridAdapter extends RecyclerViewDraggableAdapter<MainPageGr
                 context.startActivity(intent);
                 return;
             }
-            v.getContext().startActivity(new Intent(v.getContext(), MainFunctionAddActivity.class));
+            Intent intent = new Intent(v.getContext(), MainFunctionAddActivity.class);
+            intent.putExtra("functionList", dataList);
+            fragment.startActivityForResult(intent, 100);
         }
 
         public MyViewHolder(View itemView, int viewType) {

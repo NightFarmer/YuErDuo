@@ -1,5 +1,7 @@
 package com.jqyd.yuerduo.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,8 @@ import com.jqyd.yuerduo.adapter.MainPageGridAdapter;
 import com.jqyd.yuerduo.bean.FunctionBean;
 import com.jqyd.yuerduo.widget.DividerGridItemDecoration;
 import com.jqyd.yuerduo.widget.SimpleItemTouchHelperCallback;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,6 +50,8 @@ public class MainFragment extends BaseFragment {
     @Bind(R.id.layout_notice)
     View layout_notice;
 
+    MainPageGridAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +62,7 @@ public class MainFragment extends BaseFragment {
 
         recyclerView.addItemDecoration(new DividerGridItemDecoration(getContext()));
 
-        MainPageGridAdapter adapter = new MainPageGridAdapter(getContext());
+        adapter = new MainPageGridAdapter(this);
         recyclerView.setAdapter(adapter);
 
         SimpleItemTouchHelperCallback touchHelperCallback = new SimpleItemTouchHelperCallback(adapter, SimpleItemTouchHelperCallback.RecyclerViewLayoutType.grid);
@@ -111,5 +117,14 @@ public class MainFragment extends BaseFragment {
     @OnClick(R.id.bt_notice_close)
     public void onCloseNotice() {
         layout_notice.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode== Activity.RESULT_OK){
+            adapter.dataList = (ArrayList<FunctionBean>) data.getSerializableExtra("dataList");
+            adapter.notifyDataSetChanged();
+        }
     }
 }

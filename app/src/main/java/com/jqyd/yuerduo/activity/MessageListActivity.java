@@ -5,9 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.adapter.MessageListAdapter;
@@ -19,6 +25,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MessageListActivity extends AppCompatActivity {
 
@@ -27,6 +34,9 @@ public class MessageListActivity extends AppCompatActivity {
 
     @Bind(R.id.topBar_title)
     TextView topBar_title;
+
+    @Bind(R.id.yyy)
+    View yyy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +67,26 @@ public class MessageListActivity extends AppCompatActivity {
                         .color(0x00000000)
                         .size(30)
                         .build());
+
+
+        Button button = new Button(this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MessageListActivity.this, "xxx", Toast.LENGTH_SHORT).show();
+            }
+        });
+        popupWindow = new PopupWindow(button, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+
     }
 
+
+    private PopupWindow popupWindow;
+
+    @OnClick(R.id.xxx)
+    public void xx(){
+        popupWindow.showAtLocation(yyy, Gravity.BOTTOM, 0, 0);
+    }
 
 }

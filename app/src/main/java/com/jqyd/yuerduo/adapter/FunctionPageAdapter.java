@@ -46,11 +46,11 @@ public class FunctionPageAdapter extends RecyclerView.Adapter<FunctionPageAdapte
         holder.title.setText(functionBean.title);
         holder.imageView.setImageResource(functionBean.icon);
         holder.itemView.setTag(functionBean);
-        if (0==position){
-            holder.red_dot.setVisibility(View.VISIBLE);
-        }else {
+//        if (0==position){
+//            holder.red_dot.setVisibility(View.VISIBLE);
+//        }else {
             holder.red_dot.setVisibility(View.GONE);
-        }
+//        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
