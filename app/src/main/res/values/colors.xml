@@ -13,5 +13,7 @@
     <color name="textNormal">#737373</color>
 
     <color name="borderLight">#EBE8E6</color>
-    <color name="borderDark">#DBDBDB</color>
+    <color name="borderDark">#D1CFCD</color>
+
+    <color name="mask">#33000000</color>
 </resources>

@@ -6,12 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.bean.FunctionBean;
@@ -27,13 +28,19 @@ import butterknife.OnClick;
 /**
  * 常用功能新增界面
  */
-public class MainFunctionAddActivity extends AppCompatActivity {
+public class MainFunctionAddActivity extends BaseActivity {
 
-    @Bind(R.id.bt_ok)
-    View bt_ok;
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @Bind(R.id.topBar_back)
+    ImageButton topBarBack;
+    @Bind(R.id.topBar_title)
+    TextView topBarTitle;
+    @Bind(R.id.topBar_right_button)
+    TextView topbarRightButton;
+
 
     List<FunctionBean> allFunctions;
 
@@ -42,6 +49,9 @@ public class MainFunctionAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_function_add);
         ButterKnife.bind(this);
+        topBarBack.setVisibility(View.VISIBLE);
+        topbarRightButton.setVisibility(View.VISIBLE);
+        topBarTitle.setText("常用功能");
 
         Intent intent = getIntent();
         ArrayList<FunctionBean> selectedList = (ArrayList<FunctionBean>) intent.getSerializableExtra("functionList");
@@ -59,7 +69,13 @@ public class MainFunctionAddActivity extends AppCompatActivity {
                         .build());
     }
 
-    @OnClick(R.id.bt_ok)
+
+    @OnClick(R.id.topBar_back)
+    public void onBack() {
+        finish();
+    }
+
+    @OnClick(R.id.topBar_right_button)
     public void onOk() {
         Intent data = new Intent();
         ArrayList<FunctionBean> dataList = new ArrayList<>();

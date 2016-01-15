@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.activity.main.TopBar;
 import com.jqyd.yuerduo.adapter.MainPageGridAdapter;
 import com.jqyd.yuerduo.bean.FunctionBean;
 import com.jqyd.yuerduo.widget.DividerGridItemDecoration;
@@ -42,6 +43,19 @@ public class MainFragment extends BaseFragment {
     @Override
     public int getIconSelected() {
         return R.drawable.shouye1;
+    }
+
+    @Override
+    public void doWithTopBar(TopBar topBar) {
+        super.doWithTopBar(topBar);
+        topBar.right_icon.setVisibility(View.GONE);
+        topBar.arrow_down.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Bind(R.id.recyclerView)
@@ -122,7 +136,7 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode== Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             adapter.dataList = (ArrayList<FunctionBean>) data.getSerializableExtra("dataList");
             adapter.notifyDataSetChanged();
         }

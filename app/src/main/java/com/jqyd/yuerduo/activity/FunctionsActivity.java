@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.bean.FunctionBean;
@@ -24,12 +26,16 @@ import butterknife.OnClick;
 /**
  * Created by zhangfan on 2015/12/21.
  */
-public class FunctionsActivity extends AppCompatActivity {
+public class FunctionsActivity extends BaseActivity {
 
-    @Bind(R.id.tv_title)
-    TextView tv_title;
+    @Bind(R.id.topBar_title)
+    TextView topBar_title;
+
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @Bind(R.id.topBar_back)
+    ImageButton topBarBack;
 
     LayoutInflater layoutInflater;
 
@@ -38,13 +44,25 @@ public class FunctionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_functions);
         ButterKnife.bind(this);
+        topBarBack.setVisibility(View.VISIBLE);
+
 
         FunctionBean parent = (FunctionBean) getIntent().getSerializableExtra("function");
-        if (parent != null) tv_title.setText(parent.title);
+        if (parent != null) {
+            topBar_title.setText(parent.title);
+            layoutInflater = LayoutInflater.from(this);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(new FunctionListAdapter(parent.children));
+        } else {
+            Toast.makeText(FunctionsActivity.this, "数据异常", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
-        layoutInflater = LayoutInflater.from(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new FunctionListAdapter(parent.children));
+    }
+
+    @OnClick(R.id.topBar_back)
+    public void onBack() {
+        finish();
     }
 
 
@@ -76,18 +94,18 @@ public class FunctionsActivity extends AppCompatActivity {
 
                 if (pre == null) {
                     holder.line_top.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     holder.line_top.setVisibility(View.GONE);
                 }
-                if (next!=null){
+                if (next != null) {
                     holder.line_middle.setVisibility(View.VISIBLE);
                     holder.line_buttom.setVisibility(View.GONE);
-                }else {
+                } else {
                     holder.line_middle.setVisibility(View.GONE);
                     holder.line_buttom.setVisibility(View.VISIBLE);
                 }
 //                if (0!=position)
-                    holder.red_dot.setVisibility(View.GONE);
+                holder.red_dot.setVisibility(View.GONE);
             } else {
                 ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
                 layoutParams.height = 20;

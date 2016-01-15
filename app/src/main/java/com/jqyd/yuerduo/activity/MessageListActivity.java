@@ -1,23 +1,18 @@
 package com.jqyd.yuerduo.activity;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.PopupWindow;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.adapter.MessageListAdapter;
 import com.jqyd.yuerduo.bean.MessageBean;
+import com.nightfarmer.draggablerecyclerview.DraggableRecyclerView;
+import com.nightfarmer.draggablerecyclerview.ProgressStyle;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
@@ -27,16 +22,21 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MessageListActivity extends AppCompatActivity {
+/**
+ * 消息通知列表
+ * Created by zhangfan on 2016/1/7.
+ */
+public class MessageListActivity extends BaseActivity {
 
     @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
+    DraggableRecyclerView mRecyclerView;
 
     @Bind(R.id.topBar_title)
     TextView topBar_title;
 
-    @Bind(R.id.yyy)
-    View yyy;
+    Handler handler;
+    @Bind(R.id.topBar_back)
+    ImageButton topBarBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,17 @@ public class MessageListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message_list);
         ButterKnife.bind(this);
 
-        topBar_title.setText("消息通知");
+        topBarBack.setVisibility(View.VISIBLE);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        topBar_title.setText("消息通知");
+        handler = new Handler();
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager);
+
         MessageListAdapter adapter = new MessageListAdapter();
-        recyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(adapter);
 
         List<MessageBean> dataList = new ArrayList<>();
 
@@ -62,31 +68,48 @@ public class MessageListActivity extends AppCompatActivity {
 
         adapter.dataList = dataList;
 
-        recyclerView.addItemDecoration(
+        mRecyclerView.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(this)
-                        .color(0x00000000)
-                        .size(30)
+                        .color(getResources().getColor(R.color.borderDark))
+                        .size(1)
                         .build());
 
+        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
 
-        Button button = new Button(this);
-        button.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView.setLoadingListener(new DraggableRecyclerView.LoadingListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(MessageListActivity.this, "xxx", Toast.LENGTH_SHORT).show();
+            public void onRefresh() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.refreshComplete();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                mRecyclerView.refreshComplete();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRecyclerView.loadMoreComplete();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onCancelRefresh() {
+                handler.removeCallbacksAndMessages(null);
             }
         });
-        popupWindow = new PopupWindow(button, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setFocusable(true);
-
     }
 
 
-    private PopupWindow popupWindow;
-
-    @OnClick(R.id.xxx)
-    public void xx(){
-        popupWindow.showAtLocation(yyy, Gravity.BOTTOM, 0, 0);
+    @OnClick(R.id.topBar_back)
+    public void onBack() {
+        finish();
     }
-
 }

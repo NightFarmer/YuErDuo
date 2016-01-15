@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jqyd.yuerduo.R;
 
-public class ResetPasswordActivity1 extends AppCompatActivity {
+public class ResetPasswordActivity1 extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

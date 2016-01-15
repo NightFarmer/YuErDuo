@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * 可拖拽item的RecyclerView的Adapter
  * Created by zhangfan on 2015/12/21.
  */
 public abstract class RecyclerViewDraggableAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements ItemTouchHelperAdapter {

@@ -16,11 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.activity.main.TopBar;
 import com.jqyd.yuerduo.fragment.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by zhangfan on 2015/12/14.
@@ -39,6 +42,21 @@ public class ContactsFragment extends BaseFragment {
     @Override
     public int getIconSelected() {
         return R.drawable.tongxulu1;
+    }
+
+
+
+    @Override
+    public void doWithTopBar(TopBar topBar) {
+        super.doWithTopBar(topBar);
+        topBar.right_icon.setVisibility(View.GONE);
+        topBar.arrow_down.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Nullable

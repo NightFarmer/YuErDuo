@@ -1,13 +1,18 @@
 package com.jqyd.yuerduo.fragment;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.activity.PersonDetail;
+import com.jqyd.yuerduo.activity.main.TopBar;
 import com.nightfarmer.lightdialog.alert.AlertView;
 import com.nightfarmer.lightdialog.common.listener.OnItemClickListener;
 import com.nightfarmer.zxing.ScanHelper;
@@ -20,6 +25,11 @@ import butterknife.OnClick;
  * Created by zhangfan on 2015/12/14.
  */
 public class MeFragment extends BaseFragment {
+
+    @Bind(R.id.userImage)
+    ImageView userImage;
+
+
     private AlertView mAlertViewExt;
 
     @Override
@@ -37,6 +47,17 @@ public class MeFragment extends BaseFragment {
         return R.drawable.more1;
     }
 
+    @Override
+    public void doWithTopBar(TopBar topBar) {
+        super.doWithTopBar(topBar);
+        topBar.right_icon.setVisibility(View.VISIBLE);
+        topBar.arrow_down.setVisibility(View.GONE);
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
 
 
     @Nullable
@@ -63,4 +84,11 @@ public class MeFragment extends BaseFragment {
         mAlertViewExt.addExtView(extView);
         mAlertViewExt.show();
     }
+
+    @OnClick({R.id.userImage, R.id.userInfo})
+    public void goUserInfo(){
+        startActivity(new Intent(getActivity(), PersonDetail.class));
+    }
+
+
 }

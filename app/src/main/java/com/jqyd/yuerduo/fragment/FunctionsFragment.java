@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jqyd.yuerduo.R;
+import com.jqyd.yuerduo.activity.main.TopBar;
 import com.jqyd.yuerduo.adapter.FunctionPageAdapter;
 import com.jqyd.yuerduo.bean.FunctionBean;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -40,8 +41,23 @@ public class FunctionsFragment extends BaseFragment {
         return R.drawable.gongzuotai1;
     }
 
+
+    @Override
+    public void doWithTopBar(TopBar topBar) {
+        super.doWithTopBar(topBar);
+        topBar.right_icon.setVisibility(View.GONE);
+        topBar.arrow_down.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
+
 
     @Nullable
     @Override

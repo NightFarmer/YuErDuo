@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#38ADFF"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/topBar_back"
+            android:visibility="gone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/topbar_icon_back" />
+
+        <TextView
+            android:id="@+id/topBar_title"
+            style="@style/TopBarTitle"
+            android:text="标题" />
+
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/arrow_down"
+            android:background="@null"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/topBar_title"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/topBar_right_button"
+            style="@style/TopBarRightTitle"
+            android:text="确定" />
+
+        <ImageButton
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:id="@+id/topBar_right_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:src="@drawable/topbar_icon_light_barcode" />
+    </RelativeLayout>
+</RelativeLayout>
+
+

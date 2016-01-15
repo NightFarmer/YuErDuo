@@ -7,6 +7,7 @@ import com.jqyd.yuerduo.adapter.MessageListAdapter;
 import com.jqyd.yuerduo.util.VibratorUtil;
 
 /**
+ * 可拖拽item的ItemTouchHelper的回调
  * Created by zhangfan on 2015/12/21.
  */
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {

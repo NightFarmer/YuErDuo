@@ -17,6 +17,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static com.norbsoft.typefacehelper.TypefaceHelper.typeface;
+
 /**
  * Created by zhangfan on 2015/12/21.
  */
@@ -26,7 +28,9 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_message_list_item, parent, false);
+//        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_message_list_item, parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_message_list_item_new, parent, false);
+        typeface(inflate);
         return new MyViewHolder(inflate);
     }
 

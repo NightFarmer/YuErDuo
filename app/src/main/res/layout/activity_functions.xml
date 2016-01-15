@@ -7,23 +7,8 @@
     android:background="@color/windowBackgroundDark"
     tools:context="com.jqyd.yuerduo.activity.FunctionsActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#38ADFF"
-        android:fitsSystemWindows="true">
+    <include layout="@layout/layout_top_bar"/>
 
-        <RelativeLayout
-            android:id="@+id/topLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <TextView
-                android:id="@+id/tv_title"
-                style="@style/TopBarTitle"
-                android:text="功能列表" />
-        </RelativeLayout>
-    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:overScrollMode="never"

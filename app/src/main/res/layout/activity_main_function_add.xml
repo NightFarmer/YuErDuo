@@ -4,31 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/windowBackground"
-    tools:context="com.jqyd.yuerduo.MainFunctionAddActivity">
+    tools:context=".activity.MainFunctionAddActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#38ADFF"
-        android:fitsSystemWindows="true">
+    <include layout="@layout/layout_top_bar"/>
 
-        <RelativeLayout
-            android:id="@+id/topLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <TextView
-                android:id="@+id/tv_title"
-                style="@style/TopBarTitle"
-                android:text="常用功能" />
-
-            <TextView
-                android:id="@+id/bt_ok"
-                style="@style/TopBarRightTitle"
-                android:text="确定" />
-
-        </RelativeLayout>
-    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

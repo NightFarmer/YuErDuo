@@ -3,40 +3,56 @@
     package="com.jqyd.yuerduo">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="568f75f367e58e1837000aed" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="jqyd" />
+
+
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            android:label="@string/app_name" />
+            android:name=".activity.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.MainFunctionAddActivity"
-            android:label="@string/title_activity_main_function_add" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activity.ResetPasswordActivity1"
-            android:label="@string/title_activity_reset_password1"
-            android:theme="@style/AppTheme" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".activity.FunctionsActivity" />
         <activity
             android:name=".activity.MessageListActivity"
-            android:label="@string/title_activity_message_list" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activity.PersonDetail"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
 
 </manifest>
