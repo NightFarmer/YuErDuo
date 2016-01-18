@@ -105,6 +105,8 @@ public class MessageListActivity extends BaseActivity {
                 handler.removeCallbacksAndMessages(null);
             }
         });
+
+        mRecyclerView.forceRefresh();
     }
 
 

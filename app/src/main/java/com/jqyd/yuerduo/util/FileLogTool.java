@@ -80,7 +80,7 @@ public class FileLogTool implements LogTool {
         }
 
         if (MEDIA_MOUNTED.equals(externalStorageState) && hasExternalStoragePermission(context)) {
-            appDir = getExternalLogDir(context);
+            appDir = getExternalLogDir();
         }
         File file = new File(appDir, needWriteFile + ".txt");
 
@@ -96,7 +96,7 @@ public class FileLogTool implements LogTool {
         }
     }
 
-    private File getExternalLogDir(Context context) {
+    private File getExternalLogDir() {
         File dataDir = new File(new File(Environment.getExternalStorageDirectory(), "YuErDuo"), "data");
         File appLogDir = new File(dataDir, "log");
         if (!appLogDir.exists()) {
