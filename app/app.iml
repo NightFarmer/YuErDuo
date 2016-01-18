@@ -71,12 +71,10 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.NightFarmer/DraggableRecyclerView/1.0.2/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.NightFarmer/DraggableRecyclerView/1.0.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.NightFarmer/LightDialog/1.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.NightFarmer/ZXing/bde6a2ef0d/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.orhanobut/logger/1.12/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.norbsoft.typefacehelper/library/0.9.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.yqritc/recyclerview-flexibledivider/1.2.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.zhy/percent-support-extends/1.0.1/jars" />
@@ -96,19 +94,21 @@
     <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="logger-1.12" level="project" />
     <orderEntry type="library" exported="" name="butterknife-7.0.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="library-0.9.0" level="project" />
     <orderEntry type="library" exported="" name="ZXing-bde6a2ef0d" level="project" />
+    <orderEntry type="library" exported="" name="DraggableRecyclerView-1.0.6" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.9" level="project" />
-    <orderEntry type="library" exported="" name="DraggableRecyclerView-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="LightDialog-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="user_profile_mtj_1.2" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="httpclient-4.3.6" level="project" />
-    <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-flexibledivider-1.2.6" level="project" />
     <orderEntry type="library" exported="" name="percent-support-extends-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="analytics-5.6.4" level="project" />
+    <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />
+    <orderEntry type="library" exported="" name="robotium-solo-5.1" level="project" />
+    <orderEntry type="module" module-name="share" exported="" />
   </component>
 </module>

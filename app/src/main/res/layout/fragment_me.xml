@@ -63,6 +63,7 @@
         android:layout_height="1px"/>
 
     <LinearLayout
+        android:id="@+id/bt_share"
         android:clickable="true"
         android:background="@drawable/bgd_list_item"
         android:padding="15dp"

@@ -16,6 +16,7 @@ import com.orhanobut.logger.AndroidLogTool;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.LogTool;
 import com.orhanobut.logger.Logger;
+import com.umeng.socialize.PlatformConfig;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -51,6 +52,12 @@ public class MyApplication extends Application {
                 .set(Typeface.NORMAL, Typeface.createFromAsset(getAssets(), "fonts/HYQH.ttf"))
                 .create();
         TypefaceHelper.init(typeface);
+
+
+        PlatformConfig.setSinaWeibo("2117222028", "1468577ab748b2d87d6cdc92ac9e9da8");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+//        PlatformConfig.setTencentWeibo("", "");
     }
 
 
