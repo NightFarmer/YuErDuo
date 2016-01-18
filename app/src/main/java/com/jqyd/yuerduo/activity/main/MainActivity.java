@@ -28,6 +28,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jqyd.yuerduo.MyApplication;
 import com.jqyd.yuerduo.R;
 import com.jqyd.yuerduo.activity.BaseActivity;
 import com.jqyd.yuerduo.fragment.BaseFragment;
@@ -115,7 +116,7 @@ public class MainActivity extends BaseActivity {
         initBottomBar();
         fragmentList.get(0).doWithTopBar(topBar);
         viewPager.addOnPageChangeListener(new MainPageChangeListener());
-
+        viewPager.setOffscreenPageLimit(3);
     }
 
     private int preSelected;
@@ -363,7 +364,7 @@ public class MainActivity extends BaseActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("versionName", "1.1.0");
-        params.put("releaseTag", "debug");
+        params.put("releaseTag", MyApplication.ReleaseTag);
         client.post(this, "http://120.27.107.170/yuerduo-seller/sellerApi/mobileupgradeapi/getupgrademessage", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

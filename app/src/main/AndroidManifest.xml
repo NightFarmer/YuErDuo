@@ -10,6 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
 
     <application
         android:name=".MyApplication"
@@ -18,12 +24,39 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <!-- ========================================友盟↓-->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="568f75f367e58e1837000aed" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="jqyd" />
+        <!-- ========================================友盟↑-->
+
+
+        <!-- ======================================百度统计↓-->
+        <!-- APP KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="699226f695" />
+        <!-- 渠道商编号 -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="Baidu Market" />
+        <!-- 是否开启错误日志统计，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_EXCEPTION_LOG"
+            android:value="true" />
+        <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+ 
+        <receiver android:name="com.baidu.bottom.service.BottomReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <!-- ======================================百度统计↑-->
 
 
         <activity android:name=".activity.SplashActivity">

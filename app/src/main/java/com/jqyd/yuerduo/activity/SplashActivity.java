@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.baidu.mobstat.StatService;
 import com.jqyd.yuerduo.R;
 
 public class SplashActivity extends BaseActivity {
@@ -16,6 +17,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -23,6 +25,11 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         }, 1000);
+
+        StatService.setSessionTimeOut(30);
+        StatService.setLogSenderDelayed(0);
+        StatService.setDebugOn(true);
+
     }
 
 }
