@@ -37,7 +37,7 @@ public class BottomBarItem {
     @Bind(R.id.red_dot)
     View redDot;
 
-    @OnClick(R.id.buttomItem)
+    @OnClick(R.id.bottomItem)
     public void onItemClick() {
         viewPager.setCurrentItem(index, false);
     }

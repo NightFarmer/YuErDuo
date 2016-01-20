@@ -5,7 +5,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:background="#FEFEFF"
+        android:background="@color/windowBackground"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -26,12 +26,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F2F1F2"/>
+            android:background="@color/bottomBarTopBorder"/>
 
 
         <LinearLayout
             android:id="@+id/bottomBar"
-            android:background="#FCFCFC"
+            android:background="@color/bottomBarBackground"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="60dp">

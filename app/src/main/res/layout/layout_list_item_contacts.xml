@@ -10,12 +10,12 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1.0"
-        android:background="#F2F2F2"
+        android:background="@color/contactsLeftCharBackground"
         android:paddingBottom="5dip"
         android:paddingLeft="5dip"
         android:paddingTop="5dip"
         android:text="A"
-        android:textColor="#929292" />
+        android:textColor="@color/contactsLeftChar" />
 
 
     <LinearLayout
@@ -40,7 +40,7 @@
             android:paddingTop="10dip"
             android:text="hhhh"
             android:textSize="15sp"
-            android:textColor="#333333" />
+            android:textColor="@color/contactsItemText" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"

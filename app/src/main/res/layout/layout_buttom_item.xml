@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/buttomItem"
+    android:id="@+id/bottomItem"
     android:layout_width="0dp"
     android:layout_weight="1"
     android:layout_height="match_parent">
@@ -31,7 +31,7 @@
         android:id="@+id/itemTitleSelected"
         android:layout_below="@id/imageViewDefault"
         android:layout_centerHorizontal="true"
-        android:textColor="#00A0E0"
+        android:textColor="@color/bottomBarTextSelected"
         android:textSize="13sp"
         android:alpha="0"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:id="@+id/itemTitleDefault"
         android:layout_below="@id/imageViewDefault"
         android:layout_centerHorizontal="true"
-        android:textColor="#999999"
+        android:textColor="@color/bottomBarTextNormal"
         android:textSize="13sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

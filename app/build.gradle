@@ -27,7 +27,7 @@ dependencies {
     compile 'com.zhy:percent-support-extends:1.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     //    compile 'com.android.support:design:23.0.1'
-    compile 'com.github.NightFarmer:DraggableRecyclerView:1.0.6'
+    compile 'com.github.NightFarmer:DraggableRecyclerView:1.0.7'
     compile 'com.github.NightFarmer:ZXing:bde6a2ef0d'
     compile 'com.github.NightFarmer:LightDialog:1.0.1'
     compile 'com.github.orhanobut:logger:1.12'

@@ -136,17 +136,17 @@ public class MeFragment extends BaseFragment {
     private UMShareListener umShareListener = new UMShareListener() {
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(getContext(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), platform + " 分享成功", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(getContext(), platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), platform + " 分享失败", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(getContext(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), platform + " 分享取消", Toast.LENGTH_SHORT).show();
         }
     };
 }

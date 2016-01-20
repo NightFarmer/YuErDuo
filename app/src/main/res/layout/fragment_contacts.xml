@@ -20,12 +20,40 @@
                 android:id="@+id/et_search"
                 android:hint="搜索联系人"
                 android:textSize="12sp"
-                android:textColorHint="#BDBDBD"
+                android:textColorHint="@color/contactsSearchHintText"
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="30dp" />
         </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/searchBarMask"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/search_input_bgd"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/contactsSearchHintText"
+                    android:text="搜索联系人"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </RelativeLayout>
     </RelativeLayout>
 
     <FrameLayout
@@ -33,7 +61,7 @@
         android:layout_height="fill_parent" >
 
         <ListView
-            android:id="@+id/country_lvcountry"
+            android:id="@+id/contactsList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
@@ -44,14 +72,14 @@
             android:layout_width="80.0dip"
             android:layout_height="80.0dip"
             android:layout_gravity="center"
-            android:background="@android:color/darker_gray"
+            android:background="@color/contactsCenterCharBackground"
             android:gravity="center"
-            android:textColor="#ffffffff"
+            android:textColor="@color/contactsCenterChar"
             android:textSize="30.0dip"
             android:visibility="invisible" />
 
         <com.jqyd.yuerduo.fragment.contacts.SideBar
-            android:id="@+id/sidrbar"
+            android:id="@+id/sidebar"
             android:layout_width="30.0dip"
             android:layout_height="fill_parent"
             android:layout_gravity="right|center" />

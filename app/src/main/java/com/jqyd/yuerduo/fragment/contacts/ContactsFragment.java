@@ -1,14 +1,15 @@
 package com.jqyd.yuerduo.fragment.contacts;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,7 +24,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnTouch;
 
 /**
  * Created by zhangfan on 2015/12/14.
@@ -45,7 +49,6 @@ public class ContactsFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void doWithTopBar(TopBar topBar) {
         super.doWithTopBar(topBar);
@@ -63,11 +66,40 @@ public class ContactsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_contacts, container, false);
+        ButterKnife.bind(this, inflate);
         initView(inflate);
         return inflate;
     }
 
+    @Override
+    protected void onInvisible() {
+        super.onInvisible();
+        if (searchBarMask != null) {
+            et_search.setText("");
+            searchBarMask.setVisibility(View.VISIBLE);
+        }
+    }
 
+    InputMethodManager inputMethodManager;
+
+    public InputMethodManager getInputMethodManager() {
+        if (inputMethodManager == null) {
+            inputMethodManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        }
+        return inputMethodManager;
+    }
+
+    @OnClick(R.id.searchBarMask)
+    public void onSearchBarMaskClick() {
+        searchBarMask.setVisibility(View.GONE);
+        getInputMethodManager().showSoftInput(et_search, 0);
+    }
+
+    @OnTouch(R.id.contactsList)
+    public boolean OnListTouch(){
+        getInputMethodManager().hideSoftInputFromWindow(et_search.getWindowToken(), 0);
+        return false;
+    }
 
     private ListView sortListView;
     private SideBar sideBar;
@@ -75,6 +107,9 @@ public class ContactsFragment extends BaseFragment {
     private SortAdapter adapter;
 
     private EditText et_search;
+
+    @Bind(R.id.searchBarMask)
+    public View searchBarMask;
 
     /**
      * 汉字转换成拼音的类
@@ -94,7 +129,7 @@ public class ContactsFragment extends BaseFragment {
 
         pinyinComparator = new PinyinComparator();
 
-        sideBar = (SideBar) view.findViewById(R.id.sidrbar);
+        sideBar = (SideBar) view.findViewById(R.id.sidebar);
         dialog = (TextView) view.findViewById(R.id.dialog);
         et_search = (EditText) view.findViewById(R.id.et_search);
         sideBar.setTextView(dialog);
@@ -113,7 +148,7 @@ public class ContactsFragment extends BaseFragment {
             }
         });
 
-        sortListView = (ListView) view.findViewById(R.id.country_lvcountry);
+        sortListView = (ListView) view.findViewById(R.id.contactsList);
         sortListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
