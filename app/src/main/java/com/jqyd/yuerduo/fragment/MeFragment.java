@@ -45,19 +45,18 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public int getIconDefault() {
-        return R.drawable.more0;
+        return R.drawable.main_me0;
     }
 
     @Override
     public int getIconSelected() {
-        return R.drawable.more1;
+        return R.drawable.main_me1;
     }
 
     @Override
     public void doWithTopBar(TopBar topBar) {
         super.doWithTopBar(topBar);
-        topBar.right_icon.setVisibility(View.VISIBLE);
-        topBar.arrow_down.setVisibility(View.GONE);
+        topBar.contactsRadioGroup.setVisibility(View.GONE);
     }
 
     @Override

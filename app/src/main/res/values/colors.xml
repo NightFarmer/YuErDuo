@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="windowBackground">#FEFEFF</color><!--浅色背景-->
-    <color name="windowBackgroundDark">#EFEFF4</color><!--深色背景-->
+    <color name="windowBackgroundDark">#fafafa</color><!--深色背景-->
 
-    <color name="loginWindowBackground">#E6EEF5</color><!--登陆背景-->
 
-    <color name="primary">#38ADFF</color><!--主色调-->
+    <color name="primary">#38adff</color><!--主色调-->
 
+    <color name="loginWindowBackground">#dcecfd</color><!--登陆背景-->
     <color name="loginTitle">#666666</color><!--登陆标题文字-->
-    <color name="loginButton">@color/primary</color><!--登陆标题文字-->
-    <color name="loginForgetPwd">#888888</color><!--登陆忘记密码-->
+    <color name="loginButton">#00A8EC</color><!--登陆按钮文字-->
+    <color name="loginForgetPwd">#646464</color><!--登陆忘记密码-->
+    <color name="loginInputStroke">#b0bfde</color><!--登录输入框边框-->
+    
 
-
-    <color name="bottomBarBackground">#FCFCFC</color><!--主页底部页签背景-->
+    <color name="bottomBarBackground">#FFFFFF</color><!--主页底部页签背景-->
     <color name="bottomBarTopBorder">#F2F1F2</color><!--主页底部页签上边框-->
     <color name="bottomBarTextNormal">#999999</color><!--主页底部页签文字普通颜色-->
     <color name="bottomBarTextSelected">#00A0E0</color><!--主页底部页签文字选择颜色-->
 
-    <color name="functionGridItemText">#373737</color><!--首页功能按钮文字颜色-->
+    <color name="functionGridItemText">#646464</color><!--首页功能按钮文字颜色-->
+    <color name="functionGridItemDivider">#E1E1E1</color><!--首页功能分割线-->
 
-
-    <color name="contactsSearchHintText">#BDBDBD</color><!--通讯录搜索提示-->
+    <color name="contactsSearchHintText">#909090</color><!--通讯录搜索提示-->
     <color name="contactsItemText">#333333</color><!--通讯录列表文字-->
-    <color name="contactsLeftChar">#929292</color><!--通讯录左侧索引文字-->
-    <color name="contactsLeftCharBackground">#F2F2F2</color><!--通讯录左侧索引文字背景-->
+    <color name="contactsLeftChar">#646464</color><!--通讯录左侧索引文字-->
+    <color name="contactsLeftCharBackground">#f8f8f8</color><!--通讯录左侧索引文字背景-->
     <color name="contactsCenterChar">#ffffffff</color><!--通讯录中间索引文字-->
     <color name="contactsCenterCharBackground">@android:color/darker_gray</color><!--通讯录中间索引文字背景-->
-    <color name="contactsRightChar">#373737</color><!--通讯录右侧索引文字-->
-    <color name="contactsRightCharBackground">#373737</color><!--通讯录右侧索引文字背景-->
+    <color name="contactsListSplit">#E1E1E1</color><!--通讯录列表分割线-->
 
 
-    <color name="textColorHint">#808080</color><!--输入提示文字-->
+    <color name="textColorHint">#909090</color><!--输入提示文字-->
     <color name="textNormal">#737373</color><!--正常文字-->
 
     <color name="borderLight">#EBE8E6</color><!--浅色边框-->
-    <color name="borderDark">#D1CFCD</color><!--深色边框-->
+    <color name="borderDark">#d9d7d5</color><!--深色边框-->
 
     <color name="itemPressed">#EFF0F3</color><!--功能点击背景色-->
 

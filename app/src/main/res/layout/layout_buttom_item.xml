@@ -3,20 +3,22 @@
     android:id="@+id/bottomItem"
     android:layout_width="0dp"
     android:layout_weight="1"
+    android:paddingTop="5dp"
     android:layout_height="match_parent">
 
     <ImageView
         android:layout_centerHorizontal="true"
         android:id="@+id/imageViewSelected"
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:alpha="0"
         />
     <ImageView
         android:layout_centerHorizontal="true"
         android:id="@+id/imageViewDefault"
+        android:layout_marginBottom="2dp"
         android:layout_width="40dp"
-        android:layout_height="40dp" />
+        android:layout_height="30dp" />
     <View
         android:id="@+id/red_dot"
         android:visibility="gone"

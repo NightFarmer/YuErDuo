@@ -1,6 +1,7 @@
 package com.jqyd.yuerduo.activity.main;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,10 +20,8 @@ public class TopBar {
     public TextView topBar_title;
     @Bind(R.id.topBar_right_button)
     public TextView right_button;
-    @Bind(R.id.topBar_right_icon)
-    public ImageButton right_icon;
-    @Bind(R.id.arrow_down)
-    public ImageButton arrow_down;
+    @Bind(R.id.contactsRadioGroup)
+    public ViewGroup contactsRadioGroup;
 
     public TopBar(View view) {
         ButterKnife.bind(this, view);

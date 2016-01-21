@@ -26,6 +26,42 @@
             style="@style/TopBarTitle"
             android:text="标题" />
 
+        <RadioGroup
+            android:visibility="gone"
+            android:id="@+id/contactsRadioGroup"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_YuanGong"
+                android:button="@null"
+                android:background="@drawable/contacts_radio_left"
+                android:textColor="@android:color/white"
+                android:text="员工"
+                android:textSize="15sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:layout_width="wrap_content"
+                android:checked="true"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_KeHu"
+                android:textColor="@android:color/white"
+                android:button="@null"
+                android:background="@drawable/contacts_radio_right"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="客户"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
         <ImageButton
             android:visibility="gone"
             android:id="@+id/arrow_down"

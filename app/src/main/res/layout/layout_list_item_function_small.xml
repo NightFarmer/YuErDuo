@@ -32,6 +32,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            android:textColor="#646464"
             android:text="关于鱼儿多" />
 
         <View

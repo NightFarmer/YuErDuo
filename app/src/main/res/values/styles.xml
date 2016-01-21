@@ -7,6 +7,7 @@
 
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- Customize your theme here. -->
+        <item name="android:listDivider">@drawable/divider_bg_main_grid</item>
     </style>
 
     <!--标题栏标题样式-->
@@ -32,8 +33,8 @@
     <!--普通按钮风格-->
     <style name="buttonNormal">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/bgd_button_normal</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_marginTop">10dp</item>

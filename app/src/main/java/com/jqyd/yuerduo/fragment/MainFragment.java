@@ -37,19 +37,18 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public int getIconDefault() {
-        return R.drawable.shouye0;
+        return R.drawable.main_home0;
     }
 
     @Override
     public int getIconSelected() {
-        return R.drawable.shouye1;
+        return R.drawable.main_home1;
     }
 
     @Override
     public void doWithTopBar(TopBar topBar) {
         super.doWithTopBar(topBar);
-        topBar.right_icon.setVisibility(View.GONE);
-        topBar.arrow_down.setVisibility(View.GONE);
+        topBar.contactsRadioGroup.setVisibility(View.GONE);
     }
 
     @Override
@@ -85,43 +84,43 @@ public class MainFragment extends BaseFragment {
 
         FunctionBean functionBean = new FunctionBean();
         functionBean.title = "消息通知";
-        functionBean.icon = R.drawable.function3;
+        functionBean.icon = R.drawable.xxtz;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "我的订单";
-        functionBean.icon = R.drawable.function5;
+        functionBean.icon = R.drawable.wddd;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "提货管理";
-        functionBean.icon = R.drawable.function16;
+        functionBean.icon = R.drawable.thgl;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "发货管理";
-        functionBean.icon = R.drawable.function8;
+        functionBean.icon = R.drawable.fhgl;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "我的应收款";
-        functionBean.icon = R.drawable.function7;
+        functionBean.icon = R.drawable.wdysk;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "我的收款单";
-        functionBean.icon = R.drawable.function4;
+        functionBean.icon = R.drawable.wdskd;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "我的送货单";
-        functionBean.icon = R.drawable.function11;
+        functionBean.icon = R.drawable.wdshd;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "移动库存";
-        functionBean.icon = R.drawable.function12;
+        functionBean.icon = R.drawable.ydkc;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "信息反馈";
-        functionBean.icon = R.drawable.function3;
+        functionBean.icon = R.drawable.xxfk;
         adapter.dataList.add(functionBean);
         functionBean = new FunctionBean();
         functionBean.title = "我的客户";
-        functionBean.icon = R.drawable.function10;
+        functionBean.icon = R.drawable.wdkh;
         adapter.dataList.add(functionBean);
 
 

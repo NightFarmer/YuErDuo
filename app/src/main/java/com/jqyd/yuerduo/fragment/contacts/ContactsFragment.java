@@ -40,20 +40,19 @@ public class ContactsFragment extends BaseFragment {
 
     @Override
     public int getIconDefault() {
-        return R.drawable.tongxulu0;
+        return R.drawable.main_contacts_0;
     }
 
     @Override
     public int getIconSelected() {
-        return R.drawable.tongxulu1;
+        return R.drawable.main_contacts_1;
     }
 
 
     @Override
     public void doWithTopBar(TopBar topBar) {
         super.doWithTopBar(topBar);
-        topBar.right_icon.setVisibility(View.GONE);
-        topBar.arrow_down.setVisibility(View.VISIBLE);
+        topBar.contactsRadioGroup.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -51,6 +51,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 			view = LayoutInflater.from(mContext).inflate(R.layout.layout_list_item_contacts, null);
 			viewHolder.tvTitle = (TextView) view.findViewById(R.id.title);
 			viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
+			viewHolder.lineSplit = view.findViewById(R.id.line_split);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
@@ -63,8 +64,10 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 		if (position == getPositionForSection(section)) {
 			viewHolder.tvLetter.setVisibility(View.VISIBLE);
 			viewHolder.tvLetter.setText(mContent.getSortLetters());
+			viewHolder.lineSplit.setVisibility(View.GONE);
 		} else {
 			viewHolder.tvLetter.setVisibility(View.GONE);
+			viewHolder.lineSplit.setVisibility(View.VISIBLE);
 		}
 
 		viewHolder.tvTitle.setText(this.list.get(position).getName());
@@ -74,6 +77,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 	}
 
 	final static class ViewHolder {
+		View lineSplit;
 		TextView tvLetter;
 		TextView tvTitle;
 	}

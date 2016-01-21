@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.baidu.mobstat.StatService;
+import com.jqyd.yuerduo.MyApplication;
 import com.jqyd.yuerduo.R;
 
 public class SplashActivity extends BaseActivity {
@@ -21,15 +22,18 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                loading();
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
         }, 1000);
-
         StatService.setSessionTimeOut(30);
         StatService.setLogSenderDelayed(0);
         StatService.setDebugOn(true);
 
     }
 
+    public void loading(){
+        ((MyApplication)getApplication()).getAllFunction();
+    }
 }
